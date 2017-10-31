@@ -1,4 +1,4 @@
-# kotlin-ast-node-extrator
+# kotlin-ast-node-extractor
 
 Program for extraction of the specified node type from Kotlin AST.
 
