@@ -6,4 +6,5 @@ class AstReader:
         f = open(filename, 'r')
         nodes = f.read()
         f.close()
-        return json.loads(nodes)[0]
+        loaded = json.loads(nodes)
+        return loaded[0] if len(loaded) > 0 else []

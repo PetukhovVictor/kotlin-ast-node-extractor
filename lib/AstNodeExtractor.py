@@ -4,7 +4,7 @@ class AstNodeExtractor:
         self.target = target
 
     def extract(self):
-        return self._walk(self.root, [], self.target)
+        return self._walk(self.root, [], self.target) if len(self.root) > 0 else []
 
     def _walk(self, node, target_nodes, target):
         if node['type'] == target:
