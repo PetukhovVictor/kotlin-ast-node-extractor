@@ -1,6 +1,7 @@
 import os
 import json
 
+
 class AstWriter:
     @staticmethod
     def write(path, filename, nodes):

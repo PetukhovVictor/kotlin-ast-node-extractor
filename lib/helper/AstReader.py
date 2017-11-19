@@ -1,5 +1,6 @@
 import json
 
+
 class AstReader:
     @staticmethod
     def read(filename):

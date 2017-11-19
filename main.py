@@ -4,7 +4,7 @@ import os
 from lib.AstNodeExtractor import AstNodeExtractor
 from lib.helper.AstReader import AstReader
 from lib.helper.AstWriter import AstWriter
-from lib.helper.FilesWalker import FilesWorker
+from lib.helper.FilesWalker import FilesWalker
 from lib.helper.TimeLogger import TimeLogger
 
 if len(sys.argv) <= 1:
@@ -34,5 +34,5 @@ def ast_file_process(filename):
     TimeLogger.console_output(None, prefix='Processing ' + relative_filename + '...')
 
 
-extraction_time = FilesWorker.walk(folder_input, ast_file_process)
+extraction_time = FilesWalker.walk(folder_input, ast_file_process)
 TimeLogger.console_output(extraction_time, prefix='Extraction time nodes of \'' + target + '\' type: ')

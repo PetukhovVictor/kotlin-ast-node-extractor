@@ -3,7 +3,8 @@ import glob
 
 from .TimeLogger import TimeLogger
 
-class FilesWorker:
+
+class FilesWalker:
     @staticmethod
     def walk(folder, callback, extension='json', is_measure_time=True):
         if is_measure_time:
