@@ -1,5 +1,5 @@
-import sys
 import os
+import argparse
 
 from lib.AstNodeExtractor import AstNodeExtractor
 from lib.helper.AstReader import AstReader
@@ -7,23 +7,18 @@ from lib.helper.AstWriter import AstWriter
 from lib.helper.FilesWalker import FilesWalker
 from lib.helper.TimeLogger import TimeLogger
 
-if len(sys.argv) <= 1:
-    sys.stderr.write('Target (type of AST node) not specified.\n')
-    exit()
+parser = argparse.ArgumentParser()
 
-if len(sys.argv) <= 2:
-    sys.stderr.write('ASTs folder not specified.\n')
-    exit()
+parser.add_argument('--target', '-t', nargs=1, type=str, help='target type of AST node')
+parser.add_argument('--input', '-i', nargs=1, type=str, help='ASTs input folder')
+parser.add_argument('--output', '-o', nargs=1, type=str, help='ASTs snippets output folder')
+parser.add_argument('--subtree_per_file', action='store_true')
+args = parser.parse_args()
 
-if len(sys.argv) <= 3:
-    sys.stderr.write('AST extraction nodes folder (output) not specified.\n')
-    exit()
-
-subtree_per_file = len(sys.argv) == 5 and sys.argv[4] == '--subtree-per-file'
-
-target = sys.argv[1]
-folder_input = sys.argv[2]
-folder_output = sys.argv[3]
+target = args.target[0]
+folder_input = args.input[0]
+folder_output = args.output[0]
+subtree_per_file = args.subtree_per_file
 
 
 def ast_file_process(filename):
