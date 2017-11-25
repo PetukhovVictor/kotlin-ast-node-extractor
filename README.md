@@ -6,7 +6,7 @@ Program extract subtree of AST, which are nodes of the specified type.
 
 Examplpe of use:
 ```
-python3 main.py -t FUN -i ~/Desktop/least_recently_indexed_14_41_29_10_2017 -o results --subtree-per-file
+python3 main.py -t FUN -i ~/Desktop/least_recently_indexed_14_41_29_10_2017 -o results --subtree_per_file
 ```
 
 Program arguments:
