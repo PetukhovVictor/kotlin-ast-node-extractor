@@ -5,7 +5,6 @@ from lib.AstNodeExtractor import AstNodeExtractor
 from lib.helper.AstReader import AstReader
 from lib.helper.AstWriter import AstWriter
 from lib.helper.FilesWalker import FilesWalker
-from lib.helper.TimeLogger import TimeLogger
 
 parser = argparse.ArgumentParser()
 
@@ -29,7 +28,7 @@ def ast_file_process(filename):
     def ast_write(filename, extraction_nodes):
         relative_filename = os.path.relpath(filename, folder_input)
         AstWriter.write(folder_output, relative_filename, extraction_nodes)
-        TimeLogger.console_output(None, prefix='Processing ' + relative_filename + '...')
+        print('Processing ' + relative_filename + '...')
 
     if subtree_per_file:
         ast_node_counter = 1
@@ -43,5 +42,4 @@ def ast_file_process(filename):
         ast_write(filename, extraction_nodes)
 
 
-extraction_time = FilesWalker.walk(folder_input, ast_file_process)
-TimeLogger.console_output(extraction_time, prefix='Extraction time nodes of \'' + target + '\' type: ')
+FilesWalker.walk(folder_input, ast_file_process, log_text='Extraction time nodes of ' + target)

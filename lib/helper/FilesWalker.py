@@ -6,13 +6,11 @@ from .TimeLogger import TimeLogger
 
 class FilesWalker:
     @staticmethod
-    def walk(folder, callback, extension='json', is_measure_time=True):
-        if is_measure_time:
-            time_logger = TimeLogger()
+    def walk(folder, callback, extension='json', log_text=None):
+        time_logger = TimeLogger()
 
         for filename in glob.iglob(folder + '/**/*.' + extension, recursive=True):
             if path.isfile(filename):
                 callback(filename)
 
-        if is_measure_time:
-            return time_logger.finish()
+        return time_logger.finish(task_name=log_text if log_text else 'Walking files in ' + folder + ' directory')
